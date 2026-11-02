@@ -1,0 +1,88 @@
+diff --git a/app/layout.tsx b/app/layout.tsx
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -1,4 +1,5 @@
+ import type {Metadata} from 'next';
+ import './globals.css';
++import './workspace.css';
+ export const metadata:Metadata={title:{default:'LabaRapi — Pahami margin toko',template:'%s · LabaRapi'},description:'Workspace analisis margin kontribusi toko online oleh VELKIRA.',robots:{index:false,follow:false}};
+ export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="id"><body><a className="skip" href="#main">Langsung ke konten</a>{children}</body></html>;}
+diff --git a/app/workspace.css b/app/workspace.css
+new file mode 100644
+--- /dev/null
++++ b/app/workspace.css
+@@ -0,0 +1,74 @@
++/* Right-side tools, blue accents and separate metric cards. */
++.app-shell { --forest:#172740; --panel:#edf2fa; --lime:#dce8ff; --chalk:#f4f6fa; --text:#172740; --muted:#607086; --sage:#77869b; --mist:#bed3f6; --border:#e0e6ef; background:var(--chalk); color:var(--text); }
++.app-shell :focus-visible { outline-color:#3569d4; }
++.app-shell .sidebar { inset:0 0 0 auto; width:232px; padding:28px 18px 0; background:#fff; color:var(--text); border-left:1px solid var(--border); overflow-y:auto; }
++.app-shell .brand-icon { background:#3569d4; color:#fff; border-radius:11px; }
++.app-shell .brand-dot { color:#3569d4; }
++.app-shell .store-picker { background:#f6f8fc; border-color:var(--border); color:var(--muted); margin:29px 0; padding:12px; }
++.app-shell .store-picker .tiny { color:var(--muted); }
++.app-shell .store-picker select { color:var(--text); font-size:12px; }
++.app-shell .store-picker option { background:#fff; }
++.app-shell .nav-label { color:var(--muted); }
++.app-shell .sidebar nav { gap:7px; }
++.app-shell .sidebar nav a,.app-shell .settings-link { color:#607086; padding:12px; border-radius:10px; font-size:13px; }
++.app-shell .sidebar nav a.active,.app-shell .settings-link.active { background:#edf3ff; color:#2859bb; font-weight:700; box-shadow:inset -3px 0 #3569d4; }
++.app-shell .sidebar nav a:not(.active):hover,.app-shell .settings-link:hover { background:#f4f6fa; }
++.app-shell .nav-active-dot { background:#3569d4; }
++.app-shell .sidebar-bottom { padding-top:28px; }
++.app-shell .sidebar-help { background:#f5f8fe; border:1px solid #e1e9f8; }
++.app-shell .help-mark { color:#3569d4; border-color:#b7c9eb; }
++.app-shell .sidebar-help p,.app-shell .profile>div>span { color:var(--muted); }
++.app-shell .sidebar-help a { color:#2859bb; }
++.app-shell .agency { color:var(--muted); }
++.app-shell .agency strong { color:var(--text); }
++.app-shell .profile { border-color:var(--border); }
++.app-shell .profile .icon-button { color:var(--muted); }
++.app-shell .avatar { background:#e7eefb; color:#2859bb; border-radius:10px; }
++.app-shell .workspace { margin-left:0; margin-right:232px; }
++.app-shell .topbar { height:68px; background:#fff; padding-inline:36px; }
++.app-shell .workspace main { padding:32px 36px 0; max-width:1500px; }
++.app-shell .page-head h1 { font-size:32px; letter-spacing:-1.2px; }
++.app-shell .page-head .eyebrow { color:#3569d4; }
++.app-shell .page-head .button { margin-top:0; }
++.app-shell .button.primary { background:#3569d4; color:#fff; }
++.app-shell .button.primary:hover { background:#2859bb; }
++.app-shell .demo-banner { background:#edf2fa; border-color:#dce5f3; color:#526681; }
++.app-shell .demo-dot { background:#3569d4; }
++.app-shell .period-bar { background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px 16px; gap:12px; }
++.app-shell .period-bar input { background:#f8faff; border-color:#dce3ef; }
++.app-shell .metrics { align-items:stretch; gap:16px; margin:24px 0; grid-template-columns:1.4fr 1fr 1fr; }
++.app-shell .main-metric,.app-shell .side-metric { padding:22px; border:1px solid var(--border); border-radius:14px; background:#fff; }
++.app-shell .main-metric { background:#172d50; border-color:#172d50; color:#fff; }
++.app-shell .main-metric .metric-label,.app-shell .main-metric .text-button,.app-shell .main-metric .comparison-note,.app-shell .main-metric .metric-foot>span:last-child { color:#b9cbe8; }
++.app-shell .main-metric .negative { color:#ffb4ab!important; }
++.app-shell .main-metric>strong { font-size:clamp(26px,2.5vw,40px); margin-block:14px; }
++.app-shell .main-metric .status.forest { background:#ffffff18; color:#dce8ff; }
++.app-shell .metric-label { flex-wrap:wrap; gap:8px; }
++.app-shell .side-metric { display:flex; flex-direction:column; justify-content:center; }
++.app-shell .side-metric>strong { font-size:clamp(20px,2vw,29px); margin-block:14px; }
++.app-shell .metric-margin { display:none; }
++.app-shell .analysis-grid { gap:20px; margin-bottom:24px; }
++.app-shell .panel { border-radius:14px; }
++.app-shell .chart-bar.contribution,.app-shell .legend-dot { background:#3569d4; }
++.app-shell .chart-bar.loss { background:var(--error); }
++.app-shell .legend-dot.mist { background:var(--mist); }
++.app-shell .review-panel { background:#fff; border:1px solid var(--border); border-radius:14px; padding:22px; }
++.app-shell .review-item-icon { background:#edf3ff; color:#3569d4; }
++.app-shell .review-item-icon.amber { background:var(--warning-bg); color:var(--warning); }
++.app-shell .review-count { background:#edf3ff; color:#2859bb; }
++.app-shell .product-section { padding:24px; background:#fff; border:1px solid var(--border); border-radius:14px; margin-bottom:24px; }
++.app-shell th { background:#f6f8fc; }
++.app-shell .insight-callout { background:#eaf0fd; border:1px solid #dbe5fa; border-radius:14px; }
++.app-shell .insight-mark { background:#d6e4ff; color:#2859bb; }
++.app-shell .upload-panel { background:#f0f5ff; border-color:#b0c5ed; }
++.app-shell .upload-icon,.app-shell .report-intro { background:#e7efff; }
++.app-shell .suggestions button { background:#f6f8fc; }
++@media(min-width:768px) and (max-width:1200px) {
++  .app-shell .sidebar { width:208px; padding-inline:14px; } .app-shell .workspace { margin-right:208px; } .app-shell .workspace main { padding:28px 24px 0; } .app-shell .topbar { padding-inline:24px; } .app-shell .main-metric,.app-shell .side-metric { padding:18px; }
++}
++@media(min-width:768px) and (max-width:1023px) {
++  .app-shell .metrics { grid-template-columns:1fr 1fr; } .app-shell .main-metric { grid-column:1/-1; }
++}
++@media(max-width:767px) {
++  .app-shell .sidebar { width:min(288px,85vw); top:64px; padding-top:20px; } .app-shell .sidebar.mobile-open { box-shadow:-20px 0 70px #17274026; } .app-shell .workspace { margin:0; } .app-shell .topbar { height:64px; padding-inline:16px; } .app-shell .workspace main { padding:24px 16px 0; } .app-shell .page-head h1 { font-size:27px; } .app-shell .page-head .button { margin-top:24px; } .app-shell .period-bar { padding:12px; gap:8px; } .app-shell .period-bar input { width:119px; } .app-shell .metrics { grid-template-columns:1fr 1fr; gap:12px; } .app-shell .main-metric { grid-column:1/-1; padding:22px; } .app-shell .main-metric>strong { font-size:36px; } .app-shell .side-metric { padding:16px 12px; } .app-shell .side-metric>strong { font-size:clamp(17px,4.7vw,24px); letter-spacing:-.7px; } .app-shell .metric-label { font-size:11px; } .app-shell .side-metric>span:last-child { font-size:10px; } .app-shell .review-panel,.app-shell .product-section { padding:18px; } .app-shell .store-picker { margin-top:0; }
++}
